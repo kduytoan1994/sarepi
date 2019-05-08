@@ -1,0 +1,24 @@
+{
+  "name": "home_extraFee",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "homes": {
+      "type": "belongsTo",
+      "model": "Homes",
+      "foreignKey": "homeId"
+    },
+    "extraFee": {
+      "type": "belongsTo",
+      "model": "extra_fee",
+      "foreignKey": "extraFeeId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

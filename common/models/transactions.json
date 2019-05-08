@@ -1,0 +1,46 @@
+{
+  "name": "Transactions",
+  "plural": "transaction",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "customer": {
+      "type": "string",
+      "required": true
+    },
+    "reservationId": {
+      "type": "string",
+      "required": true
+    },
+    "transactionType": {
+      "type": "number",
+      "required": true
+    },
+    "transactionReason": {
+      "type": "string",
+      "required": true
+    },
+    "transactionStatus": {
+      "type": "number",
+      "required": true
+    },
+    "create_at": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "reservation": {
+      "type": "belongsTo",
+      "model": "Reservations",
+      "foreignKey": "reservationId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

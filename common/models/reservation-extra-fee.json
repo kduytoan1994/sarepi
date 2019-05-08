@@ -1,0 +1,24 @@
+{
+  "name": "reservation_extraFee",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "extraFee": {
+      "type": "belongsTo",
+      "model": "extra_fee",
+      "foreignKey": "extraFeeId"
+    },
+    "reservations": {
+      "type": "belongsTo",
+      "model": "Reservations",
+      "foreignKey": "reservationId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

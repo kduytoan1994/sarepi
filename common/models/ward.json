@@ -1,0 +1,57 @@
+{
+  "name": "Ward",
+  "plural": "ward",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": false
+    },
+    "ward_type": {
+      "type": "string",
+      "required": false
+    },
+    "slug": {
+      "type": "string",
+      "required": false
+    },
+    "name_with_type": {
+      "type": "string",
+      "required": false
+    },
+    "path": {
+      "type": "string",
+      "required": false
+    },
+    "path_with_type": {
+      "type": "string",
+      "required": false
+    },
+    "district_code": {
+      "type": "string",
+      "required": false
+    },
+    "images": {
+      "type": "string",
+      "required": false
+    },
+    "locate": {
+      "type": "GeoPoint",
+      "required": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    "district": {
+      "type": "belongsTo",
+      "model": "District",
+      "foreignKey": "district_code"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,62 @@
+{
+  "name": "District",
+  "plural": "district",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": false
+    },
+    "district_type": {
+      "type": "string",
+      "required": false
+    },
+    "slug": {
+      "type": "string",
+      "required": false
+    },
+    "name_with_type": {
+      "type": "string",
+      "required": false
+    },
+    "path": {
+      "type": "string",
+      "required": false
+    },
+    "path_with_type": {
+      "type": "string",
+      "required": false
+    },
+    "code": {
+      "type": "string",
+      "required": false
+    },
+    "province_code": {
+      "type": "string",
+      "required": false
+    },
+    "images": {
+      "type": "string",
+      "required": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    "province": {
+      "type": "belongsTo",
+      "model": "Province",
+      "foreignKey": "province_code"
+    },
+    "wards": {
+      "type": "hasMany",
+      "model": "Ward",
+      "foreignKey": "district_code"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

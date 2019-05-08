@@ -1,0 +1,150 @@
+{
+  "name": "Rooms",
+  "plural": "rooms",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "roomName": {
+      "type": "string",
+      "required": true
+    },
+    "roomArea": {
+      "type": "number",
+      "required": true
+    },
+    "roomDescription": {
+      "type": "string",
+      "required": true
+    },
+    "homeId": {
+      "type": "string",
+      "required": true
+    },
+    "maxGuest": {
+      "type": "number",
+      "required": true
+    },
+    "roomTypeId": {
+      "type": "string",
+      "required": true
+    },
+    "listReservation": {
+      "type": "array",
+      "required": false
+    },
+    "roomMedia": {
+      "type": "object",
+      "required": true
+    },
+    "roomStatus": {
+      "type": "number",
+      "required": true
+    },
+    "isActive": {
+      "type": "boolean",
+      "required": true
+    },
+    "roomDatePrice": {
+      "type": "number",
+      "required": true
+    },
+    "roomMonthPrice": {
+      "type": "number",
+      "required": true
+    },
+    "create_by": {
+      "type": "string",
+      "required": true
+    },
+    "create_at": {
+      "type": "date",
+      "required": true
+    },
+    "update_at": {
+      "type": "date",
+      "required": true
+    },
+    "update_by": {
+      "type": "string",
+      "required": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    "homes": {
+      "type": "belongsTo",
+      "model": "Homes",
+      "foreignKey": "homeId"
+    },
+    "roomCatalog": {
+      "type": "belongsTo",
+      "model": "RoomCatalog",
+      "foreignKey": "roomTypeId"
+    },
+    "create_by": {
+      "type": "belongsTo",
+      "model": "Users",
+      "foreignKey": "create_by"
+    },
+    "update_by": {
+      "type": "belongsTo",
+      "model": "Users",
+      "foreignKey": "update_by"
+    },
+    "reservations": {
+      "type": "hasMany",
+      "model": "Reservations",
+      "foreignKey": "roomId"
+    },
+    "inFurnitures": {
+      "type": "hasMany",
+      "model": "InFurniture",
+      "foreignKey": "roomId",
+      "through": "room_inFurniture",
+      "keyThrough": "inFurnitureId"
+    },
+    "room_utilities": {
+      "type": "hasMany",
+      "model": "RoomUtilities",
+      "foreignKey": "roomId",
+      "through": "room_roomUtilities",
+      "keyThrough": "roomUtilityId"
+    },
+    "extraFees": {
+      "type": "hasMany",
+      "model": "extra_fee",
+      "foreignKey": "extraFeeId",
+      "through": "room_extraFee"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

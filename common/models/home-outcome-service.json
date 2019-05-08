@@ -1,0 +1,24 @@
+{
+  "name": "home_outcomeService",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "homes": {
+      "type": "belongsTo",
+      "model": "Homes",
+      "foreignKey": "homeId"
+    },
+    "outcomeUtilities": {
+      "type": "belongsTo",
+      "model": "outcome_utilities",
+      "foreignKey": "outcomeId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

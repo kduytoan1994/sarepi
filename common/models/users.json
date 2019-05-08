@@ -1,0 +1,125 @@
+{
+  "name": "Users",
+  "plural": "users",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "restrictResetPasswordTokenScope": true,
+  "emailVerificationRequired": false,
+  "excludeBaseProperties": [
+    "realm"
+  ],
+  "hidden": [
+    "password"
+  ],
+  "properties": {
+    "email": {
+      "type": "string",
+      "required": true
+    },
+    "password": {
+      "type": "string",
+      "required": true
+    },
+    "userName": {
+      "type": "string",
+      "required": true
+    },
+    "imageProfile": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "typeJob": {
+      "type": "string"
+    },
+    "isActive": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "location": {
+      "type": "object"
+    },
+    "create_at": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    },
+    "create_by": {
+      "type": "string",
+      "required": false
+    },
+    "update_at": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    },
+    "update_by": {
+      "type": "string",
+      "required": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    "accessTokens": {
+      "type": "hasMany",
+      "model": "AccessTokens",
+      "foreignKey": "userId",
+      "option": {
+        "disableInclude": true
+      }
+    },
+    "reservation": {
+      "type": "hasMany",
+      "model": "reservations",
+      "foreignKey": "create_by"
+    },
+    "create_by": {
+      "type": "belongsTo",
+      "model": "Users",
+      "foreignKey": "create_by"
+    },
+    "update_by": {
+      "type": "belongsTo",
+      "model": "Users",
+      "foreignKey": "update_by"
+    }
+  },
+  "acls": [
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "signin"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "signout"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW",
+      "property": "getAllUsers"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

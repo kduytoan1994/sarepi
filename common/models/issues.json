@@ -1,0 +1,50 @@
+{
+  "name": "Issues",
+  "plural": "issues",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "issueName": {
+      "type": "string",
+      "required": true
+    },
+    "issueTypeId": {
+      "type": "string",
+      "required": true
+    },
+    "issueDescription": {
+      "type": "string"
+    },
+    "isResolved": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "create_by": {
+      "type": "string",
+      "required": true
+    },
+    "create_at": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    },
+    "resolveDate": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "issueCatalog": {
+      "type": "belongsTo",
+      "model": "IssueCatalog",
+      "foreignKey": "issueTypeId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

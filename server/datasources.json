@@ -1,0 +1,35 @@
+{
+  "db": {
+    "host": "localhost",
+    "port": 27017,
+    "url": "",
+    "database": "vinaland_beta",
+    "password": "",
+    "name": "db",
+    "user": "",
+    "connector": "mongodb",
+    "useNewUrlParser": "true"
+  },
+  "container": {
+    "name": "container",
+    "connector": "loopback-component-storage",
+    "provider": "filesystem",
+    "root": "./client/uploads"
+  },
+  "emailDataSource": {
+    "name": "emailDataSource",
+    "connector": "mail",
+    "transports": [
+      {
+        "type": "SMTP",
+        "host": "smtp.gmail.com",
+        "secure": true,
+        "port": 465,
+        "auth": {
+          "user": "vinalanddev2019@gmail.com",
+          "pass": "vinaland@2019"
+        }
+      }
+    ]
+  }
+}

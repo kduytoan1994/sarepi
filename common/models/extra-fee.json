@@ -1,0 +1,122 @@
+{
+  "name": "extra_fee",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": false
+    },
+    "icon_link": {
+      "type": "string"
+    },
+    "create_by": {
+      "type": "string",
+      "required": true
+    },
+    "isActive": {
+      "type": "boolean",
+      "required": true
+    },
+    "unit": {
+      "type": "string",
+      "required": true
+    },
+    "create_at": {
+      "type": "date",
+      "required": true
+    },
+    "update_by": {
+      "type": "string",
+      "required": true
+    },
+    "update_at": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "create_by": {
+      "type": "belongsTo",
+      "model": "Users",
+      "foreignKey": "create_by"
+    },
+    "update_by": {
+      "type": "belongsTo",
+      "model": "Users",
+      "foreignKey": "update_by"
+    },
+    "homes": {
+      "type": "hasMany",
+      "model": "Homes",
+      "foreignKey": "extraFeeId",
+      "through": "home_extraFee",
+      "keyThrough": "homeId"
+    },
+    "reservations": {
+      "type": "hasMany",
+      "model": "Reservations",
+      "foreignKey": "extraFeeId",
+      "through": "reservation_extraFee"
+    },
+    "rooms": {
+      "type": "hasMany",
+      "model": "Rooms",
+      "foreignKey": "roomId",
+      "through": "room_extraFee"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "manager",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "manager",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "manager",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

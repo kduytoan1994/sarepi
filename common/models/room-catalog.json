@@ -1,0 +1,104 @@
+{
+  "name": "RoomCatalog",
+  "plural": "room-catalog",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "catalogName": {
+      "type": "string",
+      "required": true
+    },
+    "catalogDescription": {
+      "type": "string",
+      "required": true
+    },
+    "isActive": {
+      "type": "boolean",
+      "required": true
+    },
+    "create_by": {
+      "type": "string",
+      "required": true
+    },
+    "create_at": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    },
+    "update_by": {
+      "type": "string",
+      "required": true
+    },
+    "update_at": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "rooms": {
+      "type": "hasMany",
+      "model": "Rooms",
+      "foreignKey": "roomTypeId"
+    },
+    "create_by": {
+      "type": "belongsTo",
+      "model": "Users",
+      "foreignKey": "create_by"
+    },
+    "update_by": {
+      "type": "belongsTo",
+      "model": "Users",
+      "foreignKey": "update_by"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "manager",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "manager",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "manager",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

@@ -1,0 +1,117 @@
+{
+  "name": "Reservations",
+  "plural": "reversation",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "roomId": {
+      "type": "string",
+      "required": true
+    },
+    "customerId": {
+      "type": "string",
+      "required": true
+    },
+    "sellerId": {
+      "type": "string",
+      "required": true
+    },
+    "bookerId": {
+      "type": "string",
+      "required": true
+    },
+    "bookingSource": {
+      "type": "string",
+      "required": true
+    },
+    "booking_code": {
+      "type": "string",
+      "required": false
+    },
+    "checkin": {
+      "type": "date",
+      "required": true
+    },
+    "checkout": {
+      "type": "date",
+      "required": false
+    },
+    "reservationStatus": {
+      "type": "number",
+      "required": true,
+      "default": 1
+    },
+    "guestNumber": {
+      "type": "number",
+      "required": true
+    },
+    "totalMoney": {
+      "type": "number",
+      "required": true
+    },
+    "prePay": {
+      "type": "number",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": false
+    },
+    "payMethod": {
+      "type": "string",
+      "required": true
+    },
+    "create_at": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    },
+    "update_at": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    },
+    "create_by": {
+      "type": "string",
+      "required": true
+    },
+    "update_by": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "room": {
+      "type": "belongsTo",
+      "model": "Rooms",
+      "foreignKey": "roomId"
+    },
+    "transactions": {
+      "type": "hasMany",
+      "model": "Transactions",
+      "foreignKey": "reservationId"
+    },
+    "customer": {
+      "type": "belongsTo",
+      "model": "Customer",
+      "foreignKey": "customerId"
+    },
+    "users": {
+      "type": "belongsTo",
+      "model": "users",
+      "foreignKey": "create_by"
+    },
+    "extraFees": {
+      "type": "hasMany",
+      "model": "extra_fee",
+      "foreignKey": "reservationId",
+      "through": "reservation_extraFee"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

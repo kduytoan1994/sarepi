@@ -1,0 +1,55 @@
+{
+  "name": "Customer",
+  "plural": "customer",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "customerEmail": {
+      "type": "string",
+      "required": true
+    },
+    "customerName": {
+      "type": "string"
+    },
+    "customerPhone": {
+      "type": "string"
+    },
+    "customerPassportId": {
+      "type": "string",
+      "required": false
+    },
+    "customerBirthday": {
+      "type": "Date"
+    },
+    "customerCountry": {
+      "type": "string",
+      "required": false
+    },
+    "extraInfo": {
+      "type": "string"
+    },
+    "create_at": {
+      "type": "Date",
+      "required": true,
+      "defaultFn": "now"
+    },
+    "update_at": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "reservations": {
+      "type": "hasMany",
+      "model": "Reservations",
+      "foreignKey": "customerId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

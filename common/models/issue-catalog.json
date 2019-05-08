@@ -1,0 +1,39 @@
+{
+  "name": "IssueCatalog",
+  "plural": "issue-catalog",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "catalogName": {
+      "type": "string",
+      "required": true
+    },
+    "create_by": {
+      "type": "string",
+      "required": true
+    },
+    "create_at": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    },
+    "update_at": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "issues": {
+      "type": "hasMany",
+      "model": "Issues",
+      "foreignKey": "issueTypeId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

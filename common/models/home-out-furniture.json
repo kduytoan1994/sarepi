@@ -1,0 +1,24 @@
+{
+  "name": "home_outFurniture",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "outFurniture": {
+      "type": "belongsTo",
+      "model": "OutFurniture",
+      "foreignKey": "outFurnitureId"
+    },
+    "homes": {
+      "type": "belongsTo",
+      "model": "Homes",
+      "foreignKey": "homeId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

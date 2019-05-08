@@ -1,0 +1,166 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../node_modules/loopback-cascade-delete-mixin",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "db",
+    "public": false
+  },
+  "AccessToken": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "db",
+    "public": true,
+    "options": {
+      "strictObjectIDCoercion": true
+    }
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Homes": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Rooms": {
+    "dataSource": "db",
+    "public": true
+  },
+  "HomeCatalog": {
+    "dataSource": "db",
+    "public": true
+  },
+  "RoomCatalog": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Users": {
+    "dataSource": "db",
+    "public": true,
+    "options": {
+      "emailVerificationRequired": false
+    }
+  },
+  "AccessTokens": {
+    "dataSource": "db",
+    "public": false
+  },
+  "IssueCatalog": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Issues": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Reservations": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Transactions": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Container": {
+    "dataSource": "container",
+    "public": true
+  },
+  "Country": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Province": {
+    "dataSource": "db",
+    "public": true
+  },
+  "District": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Ward": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Email": {
+    "dataSource": "emailDataSource"
+  },
+  "Customer": {
+    "dataSource": "db",
+    "public": true
+  },
+  "income_utilities": {
+    "dataSource": "db",
+    "public": true
+  },
+  "outcome_utilities": {
+    "dataSource": "db",
+    "public": true
+  },
+  "extra_fee": {
+    "dataSource": "db",
+    "public": true
+  },
+  "home_extraFee": {
+    "dataSource": "db",
+    "public": false
+  },
+  "home_outcomeService": {
+    "dataSource": "db",
+    "public": false
+  },
+  "home_incomeService": {
+    "dataSource": "db",
+    "public": false
+  },
+  "OutFurniture": {
+    "dataSource": "db",
+    "public": true
+  },
+  "InFurniture": {
+    "dataSource": "db",
+    "public": true
+  },
+  "RoomUtilities": {
+    "dataSource": "db",
+    "public": true
+  },
+  "home_outFurniture": {
+    "dataSource": "db",
+    "public": false
+  },
+  "room_inFurniture": {
+    "dataSource": "db",
+    "public": false
+  },
+  "room_roomUtilities": {
+    "dataSource": "db",
+    "public": false
+  },
+  "reservation_extraFee": {
+    "dataSource": "db",
+    "public": false
+  },
+  "room_extraFee": {
+    "dataSource": "db",
+    "public": false
+  }
+}

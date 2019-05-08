@@ -1,0 +1,29 @@
+{
+  "name": "room_inFurniture",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "cost": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "rooms": {
+      "type": "belongsTo",
+      "model": "Rooms",
+      "foreignKey": "roomId"
+    },
+    "inFurniture": {
+      "type": "belongsTo",
+      "model": "InFurniture",
+      "foreignKey": "inFurnitureId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

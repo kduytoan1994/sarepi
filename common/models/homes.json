@@ -1,0 +1,172 @@
+{
+  "name": "Homes",
+  "plural": "homes",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "homeName": {
+      "type": "string",
+      "required": true
+    },
+    "homeDescription": {
+      "type": "string",
+      "required": true
+    },
+    "homeTypeId": {
+      "type": "string",
+      "require": false
+    },
+    "address": {
+      "type": "object",
+      "required": false
+    },
+    "location": {
+      "type": "GeoPoint"
+    },
+    "media": {
+      "type": "object"
+    },
+    "homeStatus": {
+      "type": "number",
+      "required": true,
+      "default": 1
+    },
+    "isActive": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "numFloor": {
+      "type": "number",
+      "required": true
+    },
+    "numRoom": {
+      "type": "number",
+      "required": false
+    },
+    "hotline": {
+      "type": "string",
+      "required": false
+    },
+    "managerId": {
+      "type": "string",
+      "required": false
+    },
+    "create_by": {
+      "type": "string",
+      "required": false
+    },
+    "create_at": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    },
+    "update_at": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    },
+    "update_by": {
+      "type": "string",
+      "required": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    "rooms": {
+      "type": "hasMany",
+      "model": "Rooms",
+      "foreignKey": "homeId"
+    },
+    "homeCatalog": {
+      "type": "belongsTo",
+      "model": "HomeCatalog",
+      "foreignKey": "homeTypeId"
+    },
+    "manager": {
+      "type": "belongsTo",
+      "model": "Users",
+      "foreignKey": "managerId"
+    },
+    "create_by": {
+      "type": "belongsTo",
+      "model": "Users",
+      "foreignKey": "create_by"
+    },
+    "update_by": {
+      "type": "belongsTo",
+      "model": "Users",
+      "foreignKey": "update_by"
+    },
+    "extraFees": {
+      "type": "hasMany",
+      "model": "extra_fee",
+      "foreignKey": "homeId",
+      "through": "home_extraFee",
+      "keyThrough": "extraFeeId"
+    },
+    "outcomeUtilities": {
+      "type": "hasMany",
+      "model": "outcome_utilities",
+      "foreignKey": "homeId",
+      "through": "home_outcomeService",
+      "keyThrough": "outcomeId"
+    },
+    "incomeUtilities": {
+      "type": "hasMany",
+      "model": "income_utilities",
+      "foreignKey": "homeId",
+      "through": "home_incomeService",
+      "keyThrough": "incomeId"
+    },
+    "outFurnitures": {
+      "type": "hasMany",
+      "model": "OutFurniture",
+      "foreignKey": "homeId",
+      "through": "home_outFurniture",
+      "keyThough": "outFurnitureId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "manager",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "manager",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

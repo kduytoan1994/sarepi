@@ -1,0 +1,54 @@
+{
+  "name": "Province",
+  "plural": "province",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": false
+    },
+    "slug": {
+      "type": "string",
+      "required": false
+    },
+    "province_type": {
+      "type": "string",
+      "required": false
+    },
+    "name_with_type": {
+      "type": "string",
+      "required": false
+    },
+    "code": {
+      "type": "string",
+      "required": false
+    },
+    "country_code": {
+      "type": "string",
+      "required": false
+    },
+    "images": {
+      "type": "string",
+      "required": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    "country": {
+      "type": "belongsTo",
+      "model": "Country",
+      "foreignKey": "country_code"
+    },
+    "district": {
+      "type": "hasMany",
+      "model": "District",
+      "foreignKey": "province_code"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
